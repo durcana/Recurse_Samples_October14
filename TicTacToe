@@ -98,4 +98,6 @@ print "Player one will be X, while player two will be O"
 Play_player_1(board)
 
 
-# why won't if ["-"] in board work when in loop?
+# For Recurse Center:
+# As for what I'd like to work on during an interview with you is to clean up win_game_1/2, and combine it into
+# one method (win_game).
