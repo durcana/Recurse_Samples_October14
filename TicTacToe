@@ -1,0 +1,101 @@
+# Creating the empty board
+
+board = []
+
+for i in range(3):
+    board.append(["-"] * 3)
+
+
+def print_board(board):
+    for row in board:
+        print " ".join(row)
+
+
+# Creating the function for player 1 to play.
+def Play_player_1(board):
+
+    # user one giving coordinates for the board.
+    Player_1_row = int(raw_input("Player 1 choose a row: ")) - 1
+    Player_1_column = int(raw_input("Player 1 choose a column: ")) - 1
+
+    # Handles if choice is outside the range
+    if Player_1_row not in range(3) or Player_1_column not in range(3):
+        print "Your choice must be within 1 to 3."
+        Play_player_1(board)
+
+    # If coordinate choice has already been chosen.
+    elif board[Player_1_row][Player_1_column] == "X" or board[Player_1_row][Player_1_column] == "O":
+        print "That's already been chosen, choose again"
+        Play_player_1(board)
+
+    # Changing coordinate to player 1's choice.
+    else:
+        board[Player_1_row][Player_1_column] = "X"
+        win_game_1(board)
+
+
+# Creating the function for player 2 to play. All the same.
+def Play_player_2(board):
+
+    Player_2_row = int(raw_input("Player 2 choose a row: ")) - 1
+    Player_2_column = int(raw_input("Player 2 choose a column: ")) - 1
+
+    if Player_2_row not in range(3) or Player_2_column not in range(3):
+        print "Your choice must be within 1 to 3."
+        Play_player_2(board)
+
+    elif board[Player_2_row][Player_2_column] == "X" or board[Player_2_row][Player_2_column] == "O":
+        print "That's already been chosen, choose again"
+        Play_player_2(board)
+
+    else:
+        board[Player_2_row][Player_2_column] = "O"
+        win_game_2(board)
+
+
+def is_draw():
+    for x in range(3):
+        for y in range(3):
+            if board[x][y] == '-':
+                return False
+    return True
+
+
+# All options to see if a player has won, players 1 and 2 separate.
+def win_game_1(board):
+    if ((board[0][0] == board[1][0] == board[2][0] == "X") or (board[0][1] == board[1][1] == board[2][1] == "X") or
+    (board[0][2] == board[1][2] == board[2][2] == "X") or (board[0][0] == board[0][1] == board[0][2] == "X") or
+    (board[1][0] == board[1][1] == board[1][2] == "X") or (board[2][0] == board[2][1] == board[2][2] == "X") or
+    (board[0][0] == board[1][1] == board[2][2] == "X") or (board[0][2] == board[1][1] == board[2][0] == "X")):
+        print "Player one wins!"
+
+    elif is_draw():
+        print "It's a draw, game over."
+
+    else:
+        print print_board(board)
+        Play_player_2(board)
+
+
+def win_game_2(board):
+    if ((board[0][0] == board[1][0] == board[2][0] == "O") or (board[0][1] == board[1][1] == board[2][1] == "O") or 
+    (board[0][2] == board[1][2] == board[2][2] == "O") or (board[0][0] == board[0][1] == board[0][2] == "O") or
+    (board[1][0] == board[1][1] == board[1][2] == "O") or (board[2][0] == board[2][1] == board[2][2] == "O") or
+    (board[0][0] == board[1][1] == board[2][2] == "O") or (board[0][2] == board[1][1] == board[2][0] == "O")):
+        print "Player two wins!"
+    elif is_draw():
+        print "It's a draw, game over."
+    else:
+        print print_board(board)
+        Play_player_1(board)
+
+# Starting the game. Gives directions, prints board, then Starts Tboard function to play.
+
+print "The board is arranged in rows 1 to 3, and columns 1 to 3"
+print "Player one will be X, while player two will be O"
+# print print_board(board)
+# print board
+Play_player_1(board)
+
+
+# why won't if ["-"] in board work when in loop?
