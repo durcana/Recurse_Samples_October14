@@ -71,3 +71,7 @@ print_board(board_items)
 print "Try to get the numbers in order from 1 to 8, with the empty slot in the bottom right corner."
 print "If you want the empty slot to move to the left, write left. Same with up, down, or right."
 play_game(board_items)
+
+# For Recurse Center:
+# As for what I'd like to work on during an interview with you is to clean up win_game_1/2, and combine it into
+# one method (win_game).
