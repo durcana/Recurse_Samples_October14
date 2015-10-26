@@ -96,8 +96,3 @@ print "Player one will be X, while player two will be O"
 # print print_board(board)
 # print board
 Play_player_1(board)
-
-
-# For Recurse Center:
-# As for what I'd like to work on during an interview with you is to clean up win_game_1/2, and combine it into
-# one method (win_game).
